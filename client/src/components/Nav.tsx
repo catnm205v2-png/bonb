@@ -8,28 +8,43 @@ export function Nav() {
           <div className="w-10 h-10 flex items-center justify-center bg-primary text-primary-foreground rounded-sm font-serif font-bold text-xl">
             B
           </div>
-          <span className="font-serif font-bold text-2xl tracking-wide text-foreground">BuyorNotBuy.com</span>
+          <span className="font-serif font-bold text-2xl tracking-wide text-foreground">
+            BuyorNotBuy.com
+          </span>
         </div>
-        
+
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-foreground/80">
-          <a href="/homes" className="hover:text-primary transition-colors">Homes</a>
-          <a href="/services" className="hover:text-primary transition-colors">Services</a>
-          <a href="/content" className="hover:text-primary transition-colors">Content</a>
-          <a href="/about" className="hover:text-primary transition-colors">About</a>
-          <a href="/appointment" className="hover:text-primary transition-colors">Appointment</a>
+          <a href="/homes" className="hover:text-primary transition-colors">
+            Homes
+          </a>
+          <a href="/services" className="hover:text-primary transition-colors">
+            Services
+          </a>
+          <a href="/content" className="hover:text-primary transition-colors">
+            Content
+          </a>
+          <a href="/about" className="hover:text-primary transition-colors">
+            About
+          </a>
+          <a
+            href="/appointment"
+            className="hover:text-primary transition-colors"
+          >
+            Appointment
+          </a>
         </div>
 
         <div className="flex items-center gap-4">
-          <a 
-            href="/source-code.tar.gz" 
+          <a
+            href="/source-code.tar.gz"
             download
             className="hidden lg:inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
           >
             <Download className="h-4 w-4" />
             Source Code
           </a>
-          <a 
-            href="/developer-handoff.md" 
+          <a
+            href="/developer-handoff.md"
             download
             className="hidden lg:inline-flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
           >

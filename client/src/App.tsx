@@ -21,6 +21,7 @@ import DevopsPipeline from "@/pages/DevopsPipeline";
 import GrowthStrategy from "@/pages/GrowthStrategy";
 import IntegrationsDoc from "@/pages/IntegrationsDoc";
 import LeadCaptureFunnel from "@/pages/LeadCaptureFunnel";
+import TestPageForm from "@/pages/TestPageForm";
 
 function Router() {
   return (
@@ -42,6 +43,7 @@ function Router() {
       <Route path="/growth-strategy" component={GrowthStrategy} />
       <Route path="/integrations" component={IntegrationsDoc} />
       <Route path="/lead-funnel" component={LeadCaptureFunnel} />
+      <Route path="/test-page-form" component={TestPageForm} />
       <Route component={NotFound} />
     </Switch>
   );
