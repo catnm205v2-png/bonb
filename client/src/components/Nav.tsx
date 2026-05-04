@@ -26,6 +26,9 @@ export function Nav() {
           <a href="/about" className="hover:text-primary transition-colors">
             About
           </a>
+          <a href="/contact" className="hover:text-primary transition-colors">
+            Let's Connect
+          </a>
           <a
             href="/appointment"
             className="hover:text-primary transition-colors"

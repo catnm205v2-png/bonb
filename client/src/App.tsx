@@ -22,6 +22,7 @@ import GrowthStrategy from "@/pages/GrowthStrategy";
 import IntegrationsDoc from "@/pages/IntegrationsDoc";
 import LeadCaptureFunnel from "@/pages/LeadCaptureFunnel";
 import TestPageForm from "@/pages/TestPageForm";
+import ContactPage from "@/pages/Contact";
 
 function Router() {
   return (
@@ -44,6 +45,7 @@ function Router() {
       <Route path="/integrations" component={IntegrationsDoc} />
       <Route path="/lead-funnel" component={LeadCaptureFunnel} />
       <Route path="/test-page-form" component={TestPageForm} />
+      <Route path="/contact" component={ContactPage} />
       <Route component={NotFound} />
     </Switch>
   );
