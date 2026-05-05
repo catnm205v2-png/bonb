@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
+import { useToast } from "@/hooks/use-toast";
 
 export function ContactForm() {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,9 +20,7 @@ export function ContactForm() {
   const [submitMessage, setSubmitMessage] = useState("");
 
   const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -29,39 +29,52 @@ export function ContactForm() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitMessage("");
 
+    const mauticData = new FormData();
+    mauticData.append("mauticform[first_name]", formData.name);
+    mauticData.append("mauticform[email]", formData.email);
+    mauticData.append("mauticform[phone]", formData.phone);
+    mauticData.append("mauticform[f_message]", formData.remarks);
+    mauticData.append(
+      "mauticform[are_you_working_with_a_re]",
+      formData.workingWithRealtor === "yes" ? "Yes" : "No",
+    );
+    mauticData.append("mauticform[formId]", "6");
+    mauticData.append("mauticform[formName]", "propertyenquiry2");
+    mauticData.append("mauticform[return]", "");
+
     try {
-      const response = await fetch("/api/contact", {
+      await fetch("https://mautic.test/form/submit?formId=6", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        body: mauticData,
+        mode: "no-cors",
       });
 
-      if (response.ok) {
-        setSubmitMessage("Thank you! Your message has been sent successfully.");
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          workingWithRealtor: "no",
-          remarks: "",
-        });
-      } else {
-        setSubmitMessage(
-          "There was an error sending your message. Please try again.",
-        );
-      }
+      setSubmitMessage("Thank you! Your message has been sent successfully.");
+      toast({
+        title: "Message Sent",
+        description: "Your enquiry was delivered through Mautic.",
+      });
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        workingWithRealtor: "no",
+        remarks: "",
+      });
     } catch (error) {
       setSubmitMessage(
         "There was an error sending your message. Please try again.",
       );
-      console.error("Error:", error);
+      toast({
+        title: "Submission Failed",
+        description: "There was a problem sending your enquiry.",
+      });
+      console.error("Mautic contact submit error:", error);
     } finally {
       setIsSubmitting(false);
     }
