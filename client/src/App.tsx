@@ -3,6 +3,7 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import ScrollToTop from "@/components/ScrollToTop";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import HomesPage from "@/pages/Homes";
@@ -23,6 +24,11 @@ import IntegrationsDoc from "@/pages/IntegrationsDoc";
 import LeadCaptureFunnel from "@/pages/LeadCaptureFunnel";
 import TestPageForm from "@/pages/TestPageForm";
 import ContactPage from "@/pages/Contact";
+import BuyersGuidePage from "@/pages/BuyersGuide";
+import SellersGuidePage from "@/pages/SellersGuide";
+import ClientReviewsPage from "@/pages/ClientReviews";
+import PrivacyPolicyPage from "@/pages/PrivacyPolicy";
+import TermsOfServicePage from "@/pages/TermsOfService";
 
 function Router() {
   return (
@@ -31,6 +37,8 @@ function Router() {
       <Route path="/homes" component={HomesPage} />
       <Route path="/services" component={ServicesPage} />
       <Route path="/content" component={ContentPage} />
+      <Route path="/buyers-guide" component={BuyersGuidePage} />
+      <Route path="/sellers-guide" component={SellersGuidePage} />
       <Route path="/about" component={AboutPage} />
       <Route path="/appointment" component={AppointmentPage} />
       <Route path="/wireframe" component={WireframePage} />
@@ -46,6 +54,9 @@ function Router() {
       <Route path="/lead-funnel" component={LeadCaptureFunnel} />
       <Route path="/test-page-form" component={TestPageForm} />
       <Route path="/contact" component={ContactPage} />
+      <Route path="/client-reviews" component={ClientReviewsPage} />
+      <Route path="/privacy-policy" component={PrivacyPolicyPage} />
+      <Route path="/terms-of-service" component={TermsOfServicePage} />
       <Route component={NotFound} />
     </Switch>
   );
@@ -55,6 +66,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <ScrollToTop />
         <Toaster />
         <Router />
       </TooltipProvider>

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearch } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, BedDouble, Bath, Square, Heart } from "lucide-react";
@@ -57,7 +58,23 @@ const properties = [
 ];
 
 export function PropertyGallery() {
+  const search = useSearch();
   const [filter, setFilter] = useState<FilterType>("all");
+
+  useEffect(() => {
+    const params = new URLSearchParams(search);
+    const filterParam = params.get("filter") as FilterType | null;
+    if (filterParam && ["all", "active", "coming_soon", "sold"].includes(filterParam)) {
+      setFilter(filterParam);
+      // Scroll to properties section
+      const element = document.getElementById("properties");
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
+  }, [search]);
 
   const filteredProperties = properties.filter(
     (p) => filter === "all" || p.status === filter,
@@ -80,25 +97,37 @@ export function PropertyGallery() {
           <div className="flex gap-2 p-1 bg-background rounded-full border border-border shadow-sm overflow-x-auto w-full md:w-auto">
             <FilterBtn
               active={filter === "all"}
-              onClick={() => setFilter("all")}
+              onClick={() => {
+                setFilter("all");
+                window.history.replaceState(null, "", "/?filter=all");
+              }}
             >
               All Properties
             </FilterBtn>
             <FilterBtn
               active={filter === "active"}
-              onClick={() => setFilter("active")}
+              onClick={() => {
+                setFilter("active");
+                window.history.replaceState(null, "", "/?filter=active");
+              }}
             >
               Active
             </FilterBtn>
             <FilterBtn
               active={filter === "coming_soon"}
-              onClick={() => setFilter("coming_soon")}
+              onClick={() => {
+                setFilter("coming_soon");
+                window.history.replaceState(null, "", "/?filter=coming_soon");
+              }}
             >
               Coming Soon
             </FilterBtn>
             <FilterBtn
               active={filter === "sold"}
-              onClick={() => setFilter("sold")}
+              onClick={() => {
+                setFilter("sold");
+                window.history.replaceState(null, "", "/?filter=sold");
+              }}
             >
               Recently Sold
             </FilterBtn>

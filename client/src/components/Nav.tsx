@@ -6,14 +6,16 @@ export function Nav() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
       <div className="container mx-auto px-6 h-20 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 flex items-center justify-center bg-primary text-primary-foreground rounded-sm font-serif font-bold text-xl">
-            B
+        <Link to="/">
+          <div className="flex items-center gap-2">
+            <div className="w-10 h-10 flex items-center justify-center bg-primary text-primary-foreground rounded-sm font-serif font-bold text-xl">
+              B
+            </div>
+            <span className="font-serif font-bold text-2xl tracking-wide text-foreground">
+              BuyorNotBuy.com
+            </span>
           </div>
-          <span className="font-serif font-bold text-2xl tracking-wide text-foreground">
-            BuyorNotBuy.com
-          </span>
-        </div>
+        </Link>
 
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-foreground/80">
           {/* ABOUT DROPDOWN */}
@@ -46,24 +48,24 @@ export function Nav() {
             <a className="transition-colors">Buy/Sells</a>
             <div className="absolute left-0 top-full min-w-[240px] opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
               <div className="bg-white shadow-xl border border-border mt-2 text-black font-normal">
-                <a
-                  href="/exclusive-listings"
+                <Link
+                  to="/?filter=active"
                   className="block px-5 py-4 border-b border-gray-100 hover:text-white hover:bg-yellow-400 transition-colors"
                 >
                   Exclusive Listings
-                </a>
-                <a
-                  href="/sold"
+                </Link>
+                <Link
+                  to="/?filter=sold"
                   className="block px-5 py-4 border-b border-gray-100 hover:text-white hover:bg-yellow-400 transition-colors"
                 >
                   Sold
-                </a>
-                <a
-                  href="/coming-soon"
+                </Link>
+                <Link
+                  to="/?filter=coming_soon"
                   className="block px-5 py-4 hover:text-white hover:bg-yellow-400 transition-colors"
                 >
                   Coming Soon
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -95,7 +97,7 @@ export function Nav() {
 
           {/* REMAINING LINKS */}
           <Link
-                  to="/contact"
+            to="/contact"
             className="transition-colors hover:text-yellow-600"
           >
             Let's Connect

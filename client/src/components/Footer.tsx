@@ -1,3 +1,5 @@
+import { Link } from "wouter";
+
 export function Footer() {
   return (
     <footer className="bg-foreground text-background mt-20">
@@ -23,24 +25,24 @@ export function Footer() {
             <h4 className="font-serif font-bold text-lg mb-6">Properties</h4>
             <ul className="space-y-3 text-background/70">
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <Link href="/?filter=active" className="hover:text-primary transition-colors">
                   Active Listings
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <Link href="/?filter=coming_soon" className="hover:text-primary transition-colors">
                   Coming Soon
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <Link href="/?filter=sold" className="hover:text-primary transition-colors">
                   Recently Sold
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <Link href="/?filter=all" className="hover:text-primary transition-colors">
                   Open Houses
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -49,24 +51,24 @@ export function Footer() {
             <h4 className="font-serif font-bold text-lg mb-6">Connect</h4>
             <ul className="space-y-3 text-background/70">
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <Link href="/about" className="hover:text-primary transition-colors">
                   About Ben
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <Link href="/contact" className="hover:text-primary transition-colors">
                   Contact Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <Link href="/appointment" className="hover:text-primary transition-colors">
                   Schedule Consultation
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <Link href="/client-reviews" className="hover:text-primary transition-colors">
                   Client Reviews
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -77,12 +79,12 @@ export function Footer() {
             rights reserved.
           </div>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-primary">
+            <Link href="/privacy-policy" className="hover:text-primary">
               Privacy Policy
-            </a>
-            <a href="#" className="hover:text-primary">
+            </Link>
+            <Link href="/terms-of-service" className="hover:text-primary">
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>
